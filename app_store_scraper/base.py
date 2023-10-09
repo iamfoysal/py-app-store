@@ -6,7 +6,7 @@ import sys
 import time
 from datetime import datetime
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util import Retry
 
 logger = logging.getLogger("Base")
 
@@ -134,6 +134,7 @@ class Base:
 
     def _parse_data(self, after):
         response = self._response.json()
+        print("Response:",response)
         for data in response["data"]:
             review = data["attributes"]
             review["date"] = datetime.strptime(review["date"], "%Y-%m-%dT%H:%M:%SZ")
