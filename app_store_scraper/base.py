@@ -134,7 +134,6 @@ class Base:
 
     def _parse_data(self, after):
         response = self._response.json()
-        print("Response:",response)
         for data in response["data"]:
             review = data["attributes"]
             review["date"] = datetime.strptime(review["date"], "%Y-%m-%dT%H:%M:%SZ")
